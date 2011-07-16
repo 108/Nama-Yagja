@@ -9,9 +9,21 @@ echo $this->doctype()."\r\n"; ?>
         <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/style.css')."\r\n"; ?>
     </head>
     <body>
-        <div id="content">
-            <h1><?php echo $this->escape($this->title); ?></h1>
+        <div id="container">
+          
             <?php echo $this->layout()->content; ?>
-        </div>
-    </body>
+        
+          <div id="navbar">
+            <ul>
+              <li><a href="index.html">Home</a> <a href="testimonials/index.html">Testimonials</a><a href="registrations/index.html"> Registration</a> <a href="contact/index.html">Contact Us</a></li>
+            </ul>
+         </div><!-- navbar -->
+           <p>&nbsp;</p>
+           <p>&nbsp;</p>
+          <div id="footer">
+            <p>copiright 2011 © HMVM - All Right Reserved</p>
+          </div><!-- footer -->
+        </div><!-- container -->
+</body>
+    
 </html>
