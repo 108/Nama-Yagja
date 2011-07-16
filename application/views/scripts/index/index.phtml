@@ -23,47 +23,22 @@
 
 
 <table width="600" border="1" cellspacing="5" cellpadding="5">
-
-  <tr>
-    <th scope="row">&nbsp;</th>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <th scope="row">&nbsp;</th>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <th scope="row">&nbsp;</th>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <th scope="row">&nbsp;</th>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <th scope="row">&nbsp;</th>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <th scope="row">&nbsp;</th>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <th scope="row">&nbsp;</th>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <th scope="row">&nbsp;</th>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <th scope="row">&nbsp;</th>
-    <td>&nbsp;</td>
-  </tr>
-  <tr>
-    <th scope="row">&nbsp;</th>
-    <td>&nbsp;</td>
-  </tr>
+    <tr>
+        <th>Country Id</th>
+        <th>Sangha Id</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Japa No</th>
+    </tr>
+<?php foreach($this->japa as $japa) : ?>
+    <tr>
+        <td><?php echo $this->escape($japa->country_id);?></td>
+        <td><?php echo $this->escape($japa->sangha_id);?></td>
+        <td><?php echo $this->escape($japa->firstname);?></td>
+        <td><?php echo $this->escape($japa->lastname);?></td>
+        <td><?php echo $this->escape($japa->japa_no);?></td>
+    </tr>
+<?php endforeach; ?>
 </table>
 
 <p>&nbsp;</p>
