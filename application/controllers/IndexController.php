@@ -13,6 +13,27 @@ class IndexController extends Zend_Controller_Action
         // action body
     }
 
+    public function testimonialsAction()
+    {
+        // action body
+    }
+
+    public function registrationAction()
+    {
+        // action body
+    }
+
+    public function contactusAction()
+    {
+        // action body
+    }
+
 
 }
+
+
+
+
+
+
 
