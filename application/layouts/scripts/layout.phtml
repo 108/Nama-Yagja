@@ -1,0 +1,17 @@
+<?php
+$this->headTitle()->setSeparator(' - ');
+
+echo $this->doctype()."\r\n"; ?>
+<html xmlns='http://www.w3.org/1999/xhtml' xml:lang='en' lang='hu'>
+    <head>
+        <?php echo $this->headMeta()."\r\n"; ?>
+        <?php echo $this->headTitle()."\r\n"; ?>
+        <?php echo $this->headLink()->prependStylesheet($this->baseUrl().'/css/style.css')."\r\n"; ?>
+    </head>
+    <body>
+        <div id="content">
+            <h1><?php echo $this->escape($this->title); ?></h1>
+            <?php echo $this->layout()->content; ?>
+        </div>
+    </body>
+</html>
