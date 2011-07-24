@@ -21,25 +21,47 @@
 
 <?php echo "<p><img src='{$this->baseUrl()}/assets/japamala.jpg' width='500' height='333' alt='japamala' longdesc='assets/japamala.jpg' /></p>"; ?>
 
+<?php foreach($this->country as $country) : ?>
+    
+    <h1><?php echo $this->escape($country->country_name);?></h1>
+    
+    
+    <?php foreach($this->sangha as $sangha) : ?>
+    
+        <?php if($country->country_id == $sangha->country_id) { ?>
 
-<table width="600" border="1" cellspacing="5" cellpadding="5">
-    <tr>
-        <th>Country Id</th>
-        <th>Sangha Id</th>
-        <th>First Name</th>
-        <th>Last Name</th>
-        <th>Japa No</th>
-    </tr>
-<?php foreach($this->japa as $japa) : ?>
-    <tr>
-        <td><?php echo $this->escape($japa->country_id);?></td>
-        <td><?php echo $this->escape($japa->sangha_id);?></td>
-        <td><?php echo $this->escape($japa->firstname);?></td>
-        <td><?php echo $this->escape($japa->lastname);?></td>
-        <td><?php echo $this->escape($japa->japa_no);?></td>
-    </tr>
+            <table width="600" border="1" cellspacing="5" cellpadding="5">
+
+                <caption><?php echo $this->escape($sangha->sangha_name);?></caption>
+
+                <tr>
+                    <th>Name</th>
+                    <th>Japa No</th>
+                </tr>
+
+                <?php foreach($this->japa as $japa) : ?>
+
+                    <?php if($japa->sangha_id == $sangha->sangha_id) { ?>
+
+                    <tr>
+
+                        <td><?php echo $this->escape($japa->firstname)." ".$this->escape($japa->lastname);?></td>
+                        <td><?php echo $this->escape($japa->japa_no);?></td>
+
+                    </tr>
+                    
+                    <?php } ?>
+                    
+                <?php endforeach; ?>
+
+                <tr><td colspan="4">Total: </td></tr>
+            </table><br /><br />
+        
+        <?php } ?>
+    <?php endforeach; ?>
+
 <?php endforeach; ?>
-</table>
+    
+    <p>All together: <?php echo $this->sumTotal; ?> </p>
 
-<p>&nbsp;</p>
 </div><!-- mainContainer -->

@@ -14,23 +14,23 @@ class Application_Form_Japa extends Zend_Form
                 ->addValidator('NotEmpty')
                 ->setAttrib('accept-charset', 'utf-8');
         
-        $country_id = new Zend_Form_Element_Text('country_id');
-        $country_id->setLabel('Country ID')
-                ->setRequired(true)
-                ->addFilter('Int')
-                ->addFilter('StripTags')
-                ->addFilter('StringTrim')
-                ->addValidator('NotEmpty')
-                ->setAttrib('accept-charset', 'utf-8');
+        $country_name = new Zend_Form_Element_Select('country_name');
+        $country_name->setLabel('Country Name')
+                ->setRequired(true);
         
-        $sangha_id = new Zend_Form_Element_Text('sangha_id');
-        $sangha_id->setLabel('Sangha ID')
-                ->setRequired(true)
-                ->addFilter('Int')
-                ->addFilter('StripTags')
-                ->addFilter('StringTrim')
-                ->addValidator('NotEmpty')
-                ->setAttrib('accept-charset', 'utf-8');
+        $table = new Application_Model_DbTable_Country();
+                foreach ($table->findForSelect() as $c) {
+                    $country_name->addMultiOption($c->country_id, $c->country_name);
+                }
+                
+        $sangha_name = new Zend_Form_Element_Select('sangha_name');
+        $sangha_name->setLabel('Sangha Name')
+                ->setRequired(true);
+        
+        $t = new Application_Model_DbTable_Sangha();
+                foreach ($t->findForSelect() as $s) {
+                    $sangha_name->addMultiOption($s->sangha_id, $s->sangha_name);
+                }
         
         $firstname = new Zend_Form_Element_Text('firstname');
         $firstname->setLabel('First Name')
@@ -64,7 +64,7 @@ class Application_Form_Japa extends Zend_Form
         $cancel = new Zend_Form_Element_Submit('cancel');
         $cancel->setAttrib('id', 'cancel');
         
-        $this->addElements(array($entrant_email, $country_id, $sangha_id, $firstname, $lastname, $japa_no, $submit, $cancel));        
+        $this->addElements(array($entrant_email, $country_name, $sangha_name, $firstname, $lastname, $japa_no, $submit, $cancel));        
     }
 
 
